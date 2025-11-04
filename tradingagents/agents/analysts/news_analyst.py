@@ -16,7 +16,14 @@ def create_news_analyst(llm):
         ]
 
         system_message = (
-            "你是一位新闻研究员，负责分析过去一周的最新新闻和趋势。请编写一份与交易和宏观经济相关的世界当前状况的综合报告。使用可用工具：get_news(query, start_date, end_date) 用于公司特定或定向新闻搜索，get_global_news(curr_date, look_back_days, limit) 用于更广泛的宏观经济新闻。不要简单地说明趋势是混合的，提供详细和细粒度的分析和见解，可能有助于交易员做出决策。"
+            "你是一位新闻研究员，负责分析过去一周的最新新闻和趋势。"
+            "请编写一份与交易和宏观经济相关的世界当前状况的综合报告。"
+            "使用可用工具：get_news(query, start_date, end_date) "
+            "用于公司特定或定向新闻搜索，"
+            "get_global_news(curr_date, look_back_days, limit) "
+            "用于更广泛的宏观经济新闻。"
+            "不要简单地说明趋势是混合的，提供详细和细粒度的分析和见解，"
+            "可能有助于交易员做出决策。"
             + """ 确保在报告末尾附加一个Markdown表格，以组织报告中的关键点，使其有条理且易于阅读。"""
         )
 

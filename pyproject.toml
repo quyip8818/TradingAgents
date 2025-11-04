@@ -33,3 +33,7 @@ dependencies = [
     "typing-extensions>=4.14.0",
     "yfinance>=0.2.63",
 ]
+
+[tool.black]
+line-length = 88
+target-version = ['py310']

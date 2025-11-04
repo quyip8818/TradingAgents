@@ -1,7 +1,14 @@
 from langchain_core.prompts import ChatPromptTemplate, MessagesPlaceholder
 import time
 import json
-from tradingagents.agents.utils.agent_utils import get_fundamentals, get_balance_sheet, get_cashflow, get_income_statement, get_insider_sentiment, get_insider_transactions
+from tradingagents.agents.utils.agent_utils import (
+    get_fundamentals,
+    get_balance_sheet,
+    get_cashflow,
+    get_income_statement,
+    get_insider_sentiment,
+    get_insider_transactions,
+)
 from tradingagents.dataflows.config import get_config
 
 
@@ -19,9 +26,17 @@ def create_fundamentals_analyst(llm):
         ]
 
         system_message = (
-            "你是一位研究员，负责分析过去一周关于公司的基本面信息。请编写一份关于公司基本面信息的综合报告，如财务文件、公司概况、基本公司财务数据和公司财务历史，以获得公司基本面信息的完整视图，为交易员提供信息。确保包含尽可能多的细节。不要简单地说明趋势是混合的，提供详细和细粒度的分析和见解，可能有助于交易员做出决策。"
+            "你是一位研究员，负责分析过去一周关于公司的基本面信息。"
+            "请编写一份关于公司基本面信息的综合报告，"
+            "如财务文件、公司概况、基本公司财务数据和公司财务历史，"
+            "以获得公司基本面信息的完整视图，为交易员提供信息。"
+            "确保包含尽可能多的细节。"
+            "不要简单地说明趋势是混合的，提供详细和细粒度的分析和见解，"
+            "可能有助于交易员做出决策。"
             + " 确保在报告末尾附加一个Markdown表格，以组织报告中的关键点，使其有条理且易于阅读。"
-            + " 使用可用工具：`get_fundamentals` 用于综合公司分析，`get_balance_sheet`、`get_cashflow` 和 `get_income_statement` 用于特定财务报表。",
+            + " 使用可用工具：`get_fundamentals` 用于综合公司分析，"
+            "`get_balance_sheet`、`get_cashflow` 和 `get_income_statement` "
+            "用于特定财务报表。",
         )
 
         prompt = ChatPromptTemplate.from_messages(

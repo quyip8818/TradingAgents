@@ -14,7 +14,10 @@ def get_stock_news_openai(query, start_date, end_date):
                 "content": [
                     {
                         "type": "input_text",
-                        "text": f"你能搜索从 {start_date} 到 {end_date} 关于 {query} 的社交媒体吗？请确保只获取该期间发布的数据。",
+                        "text": (
+                            f"你能搜索从 {start_date} 到 {end_date} 关于 {query} 的社交媒体吗？"
+                            f"请确保只获取该期间发布的数据。"
+                        ),
                     }
                 ],
             }
@@ -49,7 +52,11 @@ def get_global_news_openai(curr_date, look_back_days=7, limit=5):
                 "content": [
                     {
                         "type": "input_text",
-                        "text": f"你能搜索从 {curr_date} 往前 {look_back_days} 天到 {curr_date} 的全球或宏观经济新闻，这些新闻对交易目的有参考价值吗？请确保只获取该期间发布的数据。将结果限制为 {limit} 篇文章。",
+                        "text": (
+                            f"你能搜索从 {curr_date} 往前 {look_back_days} 天到 {curr_date} "
+                            f"的全球或宏观经济新闻，这些新闻对交易目的有参考价值吗？"
+                            f"请确保只获取该期间发布的数据。将结果限制为 {limit} 篇文章。"
+                        ),
                     }
                 ],
             }
@@ -84,7 +91,11 @@ def get_fundamentals_openai(ticker, curr_date):
                 "content": [
                     {
                         "type": "input_text",
-                        "text": f"你能搜索从 {curr_date} 前一个月到 {curr_date} 所在月份关于 {ticker} 的基本面讨论吗？请确保只获取该期间发布的数据。以表格形式列出，包括市盈率/市销率/现金流等。",
+                        "text": (
+                            f"你能搜索从 {curr_date} 前一个月到 {curr_date} 所在月份 "
+                            f"关于 {ticker} 的基本面讨论吗？请确保只获取该期间发布的数据。"
+                            f"以表格形式列出，包括市盈率/市销率/现金流等。"
+                        ),
                     }
                 ],
             }

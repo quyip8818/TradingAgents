@@ -8,6 +8,7 @@ import json
 from .reddit_utils import fetch_top_from_category
 from tqdm import tqdm
 
+
 def get_YFin_data_window(
     symbol: Annotated[str, "ticker symbol of the company"],
     curr_date: Annotated[str, "Start date in yyyy-mm-dd format"],
@@ -48,6 +49,7 @@ def get_YFin_data_window(
         + df_string
     )
 
+
 def get_YFin_data(
     symbol: Annotated[str, "ticker symbol of the company"],
     start_date: Annotated[str, "Start date in yyyy-mm-dd format"],
@@ -81,6 +83,7 @@ def get_YFin_data(
     filtered_data = filtered_data.reset_index(drop=True)
 
     return filtered_data
+
 
 def get_finnhub_news(
     query: Annotated[str, "Search query or ticker symbol"],
@@ -191,6 +194,7 @@ def get_finnhub_company_insider_transactions(
         + "The change field reflects the variation in share count—here a negative number indicates a reduction in holdings—while share specifies the total number of shares involved. The transactionPrice denotes the per-share price at which the trade was executed, and transactionDate marks when the transaction occurred. The name field identifies the insider making the trade, and transactionCode (e.g., S for sale) clarifies the nature of the transaction. FilingDate records when the transaction was officially reported, and the unique id links to the specific SEC filing, as indicated by the source. Additionally, the symbol ties the transaction to a particular company, isDerivative flags whether the trade involves derivative securities, and currency notes the currency context of the transaction."
     )
 
+
 def get_data_in_range(ticker, start_date, end_date, data_type, data_dir, period=None):
     """
     Gets finnhub data saved and processed on disk.
@@ -223,6 +227,7 @@ def get_data_in_range(ticker, start_date, end_date, data_type, data_dir, period=
         if start_date <= key <= end_date and len(value) > 0:
             filtered_data[key] = value
     return filtered_data
+
 
 def get_simfin_balance_sheet(
     ticker: Annotated[str, "ticker symbol"],

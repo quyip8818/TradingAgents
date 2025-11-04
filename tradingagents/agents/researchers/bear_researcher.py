@@ -15,14 +15,21 @@ def create_bear_researcher(llm, memory):
         news_report = state["news_report"]
         fundamentals_report = state["fundamentals_report"]
 
-        curr_situation = f"{market_research_report}\n\n{sentiment_report}\n\n{news_report}\n\n{fundamentals_report}"
+        curr_situation = (
+            f"{market_research_report}\n\n"
+            f"{sentiment_report}\n\n"
+            f"{news_report}\n\n"
+            f"{fundamentals_report}"
+        )
         past_memories = memory.get_memories(curr_situation, n_matches=2)
 
         past_memory_str = ""
         for i, rec in enumerate(past_memories, 1):
             past_memory_str += rec["recommendation"] + "\n\n"
 
-        prompt = f"""你是一位看跌分析师，主张不投资该股票。你的目标是提出一个理由充分的论点，强调风险、挑战和负面指标。利用提供的研究和数据来突出潜在的负面影响，并有效反驳看涨论点。
+        prompt = f"""你是一位看跌分析师，主张不投资该股票。
+你的目标是提出一个理由充分的论点，强调风险、挑战和负面指标。
+利用提供的研究和数据来突出潜在的负面影响，并有效反驳看涨论点。
 
 重点关注：
 

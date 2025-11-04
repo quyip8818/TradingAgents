@@ -15,14 +15,22 @@ def create_bull_researcher(llm, memory):
         news_report = state["news_report"]
         fundamentals_report = state["fundamentals_report"]
 
-        curr_situation = f"{market_research_report}\n\n{sentiment_report}\n\n{news_report}\n\n{fundamentals_report}"
+        curr_situation = (
+            f"{market_research_report}\n\n"
+            f"{sentiment_report}\n\n"
+            f"{news_report}\n\n"
+            f"{fundamentals_report}"
+        )
         past_memories = memory.get_memories(curr_situation, n_matches=2)
 
         past_memory_str = ""
         for i, rec in enumerate(past_memories, 1):
             past_memory_str += rec["recommendation"] + "\n\n"
 
-        prompt = f"""你是一位看涨分析师，主张投资该股票。你的任务是建立一个强有力的、基于证据的案例，强调增长潜力、竞争优势和积极的市场指标。利用提供的研究和数据来有效解决担忧并反驳看跌论点。
+        prompt = f"""你是一位看涨分析师，主张投资该股票。
+你的任务是建立一个强有力的、基于证据的案例，
+强调增长潜力、竞争优势和积极的市场指标。
+利用提供的研究和数据来有效解决担忧并反驳看跌论点。
 
 重点关注：
 - 增长潜力：强调公司的市场机会、收入预测和可扩展性。

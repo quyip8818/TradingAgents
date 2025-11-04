@@ -12,16 +12,27 @@ def create_research_manager(llm, memory):
 
         investment_debate_state = state["investment_debate_state"]
 
-        curr_situation = f"{market_research_report}\n\n{sentiment_report}\n\n{news_report}\n\n{fundamentals_report}"
+        curr_situation = (
+            f"{market_research_report}\n\n"
+            f"{sentiment_report}\n\n"
+            f"{news_report}\n\n"
+            f"{fundamentals_report}"
+        )
         past_memories = memory.get_memories(curr_situation, n_matches=2)
 
         past_memory_str = ""
         for i, rec in enumerate(past_memories, 1):
             past_memory_str += rec["recommendation"] + "\n\n"
 
-        prompt = f"""作为投资组合经理和辩论促进者，你的角色是批判性地评估这一轮辩论并做出明确的决定：与看跌分析师一致，与看涨分析师一致，或者只有在基于所呈现的论点有强烈理由时才选择持有。
+        prompt = f"""作为投资组合经理和辩论促进者，
+你的角色是批判性地评估这一轮辩论并做出明确的决定：
+与看跌分析师一致，与看涨分析师一致，
+或者只有在基于所呈现的论点有强烈理由时才选择持有。
 
-简洁地总结双方的关键点，重点关注最令人信服的证据或推理。你的建议——买入、卖出或持有——必须清晰且可执行。避免仅仅因为双方都有有效观点就默认选择持有；要基于辩论中最强有力的论点做出承诺。
+简洁地总结双方的关键点，重点关注最令人信服的证据或推理。
+你的建议——买入、卖出或持有——必须清晰且可执行。
+避免仅仅因为双方都有有效观点就默认选择持有；
+要基于辩论中最强有力的论点做出承诺。
 
 此外，为交易员制定详细的投资计划。这应包括：
 
