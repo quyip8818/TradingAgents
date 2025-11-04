@@ -29,7 +29,7 @@ def create_msg_delete():
         removal_operations = [RemoveMessage(id=m.id) for m in messages]
         
         # Add a minimal placeholder message
-        placeholder = HumanMessage(content="Continue")
+        placeholder = HumanMessage(content="继续")
         
         return {"messages": removal_operations + [placeholder]}
     
